@@ -8,7 +8,7 @@
 	 "npm": "3.10.8"
   },
   "scripts": {
-  "start": "hello-world-server.js"
+  "start": "node hello-world-server.js"
 	},
   "repository": {
     "type": "git",
