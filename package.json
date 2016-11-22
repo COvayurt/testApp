@@ -1,0 +1,25 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "test iste",
+  "main": "hello-world-server.js",
+  "scripts": {
+  "start": "hello-world-server.js"
+	},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/COvayurt/testApp.git"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "author": "covayurt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/COvayurt/testApp/issues"
+  },
+  "homepage": "https://github.com/COvayurt/testApp#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
