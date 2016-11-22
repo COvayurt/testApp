@@ -2,13 +2,13 @@
   "name": "test",
   "version": "1.0.0",
   "description": "test iste",
-  "main": "hello-world-server.js",
+  "main": "index.js",
   "engines": {
     "node": "6.9.1",
     "npm": "3.10.8"
   },
   "scripts": {
-    "start": "node hello-world-server.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
