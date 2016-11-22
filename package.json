@@ -4,8 +4,8 @@
   "description": "test iste",
   "main": "hello-world-server.js",
   "engines": {
-    "node": "6.9.x",
-	 "npm": "3.10.x"
+    "node": "6.9.1",
+	 "npm": "3.10.8"
   },
   "scripts": {
   "start": "hello-world-server.js"
