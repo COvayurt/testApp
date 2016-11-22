@@ -10,7 +10,7 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
 	res.setHeader('Content-Type', 'application/json');
-	var numberReq = req.query.test;
+	var numberReq = req.query.number;
 	
 	res.send(JSON.stringify({ number: numberReq * 2 }));
      
