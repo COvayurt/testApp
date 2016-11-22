@@ -22,8 +22,5 @@
   "bugs": {
     "url": "https://github.com/COvayurt/testApp/issues"
   },
-  "homepage": "https://github.com/COvayurt/testApp#readme",
-  "dependencies": {
-    "express": "^4.14.0"
-  }
+  "homepage": "https://github.com/COvayurt/testApp#readme"
 }
