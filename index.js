@@ -1,19 +1,64 @@
 var cool = require('cool-ascii-faces');
+
 var express = require('express');
+var bodyParser = require('body-parser');
+
 var app = express();
+var globalDB;
+// parse application/json
+app.use(bodyParser.json());
 
-app.use(express.static(__dirname + '/public'));
+var MongoClient = require('mongodb').MongoClient, assert = require('assert');
 
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+// Connection URL
+var url = 'mongodb://localhost:27017/test';
 
-app.get('/', function(req, res) {
-	res.setHeader('Content-Type', 'application/json');
-	var numberReq = req.query.number * 2;
+var insertOrganization = function(record) {
+	var collection = globalDB.collection('organization');
+
+	collection.insert(record, function(err, result) {
+		console.log("Inserted documents into the document collection");
+	});
+}
+
+var updateOrganizationForVehicle = function(record) {
+	var collection = globalDB.collection('organization');
+	var jsonRecord = record.record;
+	var vehiclesRec = jsonRecord.vehicles[0];
+	var valuableRecord = JSON.stringify(record.record);
+	valuableRecord = valuableRecord.substring(2, valuableRecord.length);
+	valuableRecord = valuableRecord.substring(0, valuableRecord.length - 1);
 	
-	res.send({ number: numberReq});
-     
+	collection.update({
+		'_id' : record.query.id
+	}, {
+		$set : valuableRecord
+	},
+	function(err, result) {
+		if (err)
+			throw err;
+		console.log(result);
+	});
+
+}
+
+// Use connect method to connect to the Server
+MongoClient.connect(url, function(err, db) {
+	assert.equal(null, err);
+	globalDB = db;
+	console.log("Connected correctly to server");
+});
+
+app.use('/saveOrganization', function(req, res, next) {
+	console.log(req.body);  
+	insertOrganization(req.body);
+	res.end("Thats it Organization!");
+});
+
+app.use('/saveVehicle', function(req, res, next) {
+	console.log(req.body); 
+	updateOrganizationForVehicle(req.body);
+	res.end("Thats it Vehicle!");
 });
 
 app.get('/cool', function(request, response) {
